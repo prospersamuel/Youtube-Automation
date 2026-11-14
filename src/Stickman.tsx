@@ -26,6 +26,7 @@ const step = (p: Pt, angle: number, len: number): Pt => [
 const hose = (a: Pt, b: Pt, c: Pt) => `M${a[0]} ${a[1]} Q${b[0]} ${b[1]} ${c[0]} ${c[1]}`;
 
 export const poses: Record<string, Pose> = {
+  idle: { lean: 0, headTilt: -4, armF: [12, 4], armB: [-12, -4], legF: [11, 4], legB: [-11, -4] },
   point: { lean: 0, headTilt: -6, armF: [106, 156], armB: [-40, 50], legF: [11, 4], legB: [-11, -4] },
   read: { lean: 3, headTilt: 9, armF: [50, 105], armB: [38, 100], legF: [11, 4], legB: [-11, -4] },
   walk: { lean: 7, headTilt: -14, armF: [-34, -4], armB: [38, 78], legF: [30, 4], legB: [-14, -46] },
@@ -46,7 +47,7 @@ export const Stickman: React.FC<{
   const hip: Pt = [0, 0];
   const up = 180 - pose.lean;
   const neck = step(hip, up, SIZE.torso);
-  const shoulder = step(hip, up, SIZE.torso - 24);
+  const shoulder = step(hip, up, SIZE.torso - 40);
   const headC = step(neck, up, 50);
 
   const limb = (from: Pt, [a1, a2]: [number, number], l1: number, l2: number) => {

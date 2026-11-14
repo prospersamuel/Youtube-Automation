@@ -4,10 +4,17 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { chromium } from "playwright";
 import { frames } from "../src/StyleFrame";
+import { branding } from "../src/Branding";
+
+type Still = { id: string; Component: React.FC; dir: string; width: number; height: number; scale?: number };
 
 const root = path.resolve(__dirname, "..");
-const out = path.join(root, "style-frames");
 const only = process.argv[2];
+
+const stills: Still[] = [
+  ...frames.map((f) => ({ ...f, dir: "style-frames", width: 1920, height: 1080 })),
+  ...branding,
+];
 
 const fontFace = [500, 600, 700]
   .map((w) => {
@@ -18,18 +25,19 @@ const fontFace = [500, 600, 700]
   .join("");
 
 (async () => {
-  fs.mkdirSync(out, { recursive: true });
   const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
-  for (const { id, Component } of frames) {
-    if (only && !id.includes(only)) continue;
+  for (const { id, Component, dir, width, height, scale = 1 } of stills) {
+    if (only && !`${dir}/${id}`.includes(only)) continue;
+    const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: scale });
     const html = `<!doctype html><html><head><meta charset="utf-8"><style>${fontFace}html,body{margin:0;background:#000}</style></head><body>${renderToStaticMarkup(
       <Component />
     )}</body></html>`;
     await page.setContent(html);
     await page.evaluate(() => document.fonts.ready);
-    const file = path.join(out, `${id}.png`);
+    fs.mkdirSync(path.join(root, dir), { recursive: true });
+    const file = path.join(root, dir, `${id}.png`);
     await page.locator("#frame").screenshot({ path: file });
+    await page.close();
     console.log(file);
   }
   await browser.close();
