@@ -17,14 +17,14 @@ const cue = makeCues(timings);
 const CUT = {
   later: cue.at("Six months later") - 0.25,
   where: cue.at("So where did") - 0.2,
-  millions: cue.at("Prosper's problem") - 0.2,
+  millions: cue.at("Pip's problem") - 0.2,
   traps: cue.at("He has walked") - 0.2,
 };
 export const HOOK_END = cue.end("get you out") + 1;
 
 const drift = (t: number, from: number, to: number) => 1 + 0.025 * ramp(t, from, to - from, Easing.linear);
 
-const Prosper: React.FC<Omit<React.ComponentProps<typeof Stickman>, "theme" | "outfit" | "floorY"> & { floorY?: number; t: number }> = ({ t, floorY = S.FLOOR, ...rest }) => (
+const Hero: React.FC<Omit<React.ComponentProps<typeof Stickman>, "theme" | "outfit" | "floorY"> & { floorY?: number; t: number }> = ({ t, floorY = S.FLOOR, ...rest }) => (
   <Stickman theme={T} outfit="scarf" floorY={floorY} blink={blinkAt(t)} {...rest} />
 );
 
@@ -59,9 +59,9 @@ const Raise: React.FC<{ t: number }> = ({ t }) => {
       }
       front={
         <>
-          <Prosper t={t} x={860} pose={alive(pose, t)} lift={hop} expression={t < roll ? "smile" : t < thrilled ? "wonder" : "open"} />
+          <Hero t={t} x={860} pose={alive(pose, t)} lift={hop} expression={t < roll ? "smile" : t < thrilled ? "wonder" : "open"} />
           <K.At x={1045} y={318} s={pop(t, 0.15) * (1 - ramp(t, card + 0.4, 0.25))} r={-4}>
-            <K.NameTag t={T} text="Prosper" />
+            <K.NameTag t={T} text="Pip" />
           </K.At>
           <K.At x={1370 + 900 * (1 - ramp(t, card, 0.5))} y={360} s={(t < card ? 0 : 0.6 + 0.4 * pop(t, card)) * (1 + 0.1 * Math.sin(Math.PI * ramp(t, roll, 0.6)))} r={-3}>
             <K.PayCard t={T} amount={Math.round(mix(3000, 4000, rolled) / 10) * 10} badge={pop(t, roll + 0.55)} />
@@ -87,7 +87,7 @@ const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL"];
 const Later: React.FC<{ t: number }> = ({ t }) => {
   const flips = cue.at("Six months later") + 0.1;
   const day = cue.at("twenty-sixth");
-  const opens = cue.at("Prosper opens");
+  const opens = cue.at("Pip opens");
   const eleven = cue.at("eleven dollars");
   const same = cue.at("Exactly like");
   const stamp = cue.at("before the raise");
@@ -116,7 +116,7 @@ const Later: React.FC<{ t: number }> = ({ t }) => {
       front={
         <>
           <g opacity={calendarOut}>
-          <Prosper
+          <Hero
             t={t}
             x={780}
             pose={alive(pose, t)}
@@ -176,7 +176,7 @@ const Where: React.FC<{ t: number }> = ({ t }) => {
       }
       front={
         <>
-          <Prosper t={t} x={440} pose={alive(pose, t)} expression="wonder" />
+          <Hero t={t} x={440} pose={alive(pose, t)} expression="wonder" />
           <K.At x={mix(640, 1120, fly)} y={mix(340, 150, fly) + Math.sin(t * 9) * 10} s={pop(t, extra) * (1 - ramp(t, go, 0.22))} r={-6}>
             <K.WingedMoney t={T} flap={Math.sin(t * 26) * 20} text="$1,000" />
           </K.At>
@@ -246,7 +246,7 @@ const Millions: React.FC<{ t: number }> = ({ t }) => {
               })}
             </g>
           ))}
-          <Prosper t={t} x={960} floorY={905} pose={alive(mixPose(poses.slump, poses.idle, 0.35), t)} expression="sad" />
+          <Hero t={t} x={960} floorY={905} pose={alive(mixPose(poses.slump, poses.idle, 0.35), t)} expression="sad" />
           <K.At x={960} y={mix(140, 205, pop(t, card))} s={0.74 * pop(t, card)} r={-2}>
             <K.PayCard t={T} amount={4000} strike={ramp(t, strike, 0.4)} />
           </K.At>
@@ -278,7 +278,7 @@ const Traps: React.FC<{ t: number }> = ({ t }) => {
       }
       front={
         <>
-          <Prosper t={t} x={340} pose={alive(pose, t)} expression={t < happy ? "wonder" : "open"} />
+          <Hero t={t} x={340} pose={alive(pose, t)} expression={t < happy ? "wonder" : "open"} />
           {[0, 1, 2].map((i) => {
             const flip = ramp(t, moves + i * 0.22, 0.5, Easing.inOut(Easing.cubic));
             const ask = which + i * 0.24;

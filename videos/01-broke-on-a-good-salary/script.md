@@ -7,15 +7,15 @@ Sources, credited in the description and not spoken: The Psychology of Money (Mo
 
 ## Hook
 
-Meet Prosper. Prosper just got a raise. A big one. He goes from three thousand dollars a month to four thousand. He's thrilled. This is it. This is when life finally gets easier.
+Meet Pip. Pip just got a raise. A big one. He goes from three thousand dollars a month to four thousand. He's thrilled. This is it. This is when life finally gets easier.
 
-Six months later, it's the twenty-sixth of the month. Prosper opens his banking app, and there's eleven dollars in it.
+Six months later, it's the twenty-sixth of the month. Pip opens his banking app, and there's eleven dollars in it.
 
 Exactly like before the raise.
 
 So where did an extra thousand dollars a month go? Nobody robbed him. He didn't gamble it. And he's not bad at maths.
 
-Prosper's problem is the same one millions of people with good salaries have. And it has almost nothing to do with how much he earns.
+Pip's problem is the same one millions of people with good salaries have. And it has almost nothing to do with how much he earns.
 
 He has walked into three money traps. By the end of this video you'll know which ones you're in, and the three moves that get you out.
 
@@ -23,7 +23,7 @@ He has walked into three money traps. By the end of this video you'll know which
 
 Let's rewind to the week of the raise.
 
-Prosper looks around his small apartment and thinks: I earn more now. I deserve better. So he moves somewhere nicer. That's four hundred dollars more a month.
+Pip looks around his small apartment and thinks: I earn more now. I deserve better. So he moves somewhere nicer. That's four hundred dollars more a month.
 
 Then he looks at his old car. It works fine. But it doesn't look like the car of someone who earns four thousand a month. So he gets a newer one. That's a three hundred and fifty dollar payment.
 
@@ -39,7 +39,7 @@ So here is the first hard truth. A raise does not fix a spending problem. It jus
 
 ## Trap two: the show
 
-But why did Prosper upgrade everything in the first place? His old apartment kept the rain out. His old car got him to work.
+But why did Pip upgrade everything in the first place? His old apartment kept the rain out. His old car got him to work.
 
 Be honest. A lot of it wasn't for him. It was for the audience.
 
@@ -51,7 +51,7 @@ Think about what that means. Nobody is admiring the driver. They're imagining th
 
 So the things we buy to earn respect barely work. People are too busy thinking about themselves to be impressed by you. You pay full price for the admiration, and it never arrives.
 
-Prosper is spending three hundred and fifty dollars a month on a car, to impress people who never looked up from their phones.
+Pip is spending three hundred and fifty dollars a month on a car, to impress people who never looked up from their phones.
 
 ## Trap three: rich is not the same as wealthy
 
@@ -87,7 +87,7 @@ Most of us are in all three. I was.
 
 ## The way out
 
-So what should Prosper do? Here are three moves. None of them need a bigger salary.
+So what should Pip do? Here are three moves. None of them need a bigger salary.
 
 Move one. Pay yourself first.
 
@@ -113,7 +113,7 @@ So it's not that you can never have the nice car. It's about the order. Assets f
 
 ## Close
 
-Now imagine Prosper had known all this the week he got his raise.
+Now imagine Pip had known all this the week he got his raise.
 
 Same job. Same four thousand dollars. But on payday, five hundred disappears into savings and investments before he ever sees it. He keeps the car that works. He stays in his apartment a little longer.
 
