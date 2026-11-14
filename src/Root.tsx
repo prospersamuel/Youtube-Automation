@@ -1,17 +1,11 @@
 import React from "react";
-import { AbsoluteFill, Composition, interpolate, useCurrentFrame } from "remotion";
+import { Composition } from "remotion";
 import "@fontsource/fredoka/500.css";
 import "@fontsource/fredoka/600.css";
 import "@fontsource/fredoka/700.css";
-import { FrameB } from "./StyleFrame";
+import { FPS } from "./kit/time";
+import { HOOK_END, V01Hook } from "./videos/v01/Hook";
 
-const Smoke: React.FC = () => {
-  const frame = useCurrentFrame();
-  return (
-    <AbsoluteFill style={{ transform: `scale(${interpolate(frame, [0, 60], [1, 1.06])})` }}>
-      <FrameB />
-    </AbsoluteFill>
-  );
-};
-
-export const Root: React.FC = () => <Composition id="Smoke" component={Smoke} durationInFrames={60} fps={30} width={1920} height={1080} />;
+export const Root: React.FC = () => (
+  <Composition id="V01Hook" component={V01Hook} durationInFrames={Math.round(HOOK_END * FPS)} fps={FPS} width={1920} height={1080} />
+);

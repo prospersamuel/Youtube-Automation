@@ -13,8 +13,8 @@ export type Pose = {
   legB: [number, number];
 };
 
-export type Outfit = "beanie" | "scarf" | "hoodie";
-export type Expression = "smile" | "open" | "wonder";
+export type Outfit = "beanie" | "scarf" | "hoodie" | "plain";
+export type Expression = "smile" | "open" | "wonder" | "sad";
 
 const SIZE = { head: 64, torso: 150, armU: 86, armL: 82, legU: 104, legL: 104, stroke: 13 };
 
@@ -29,6 +29,12 @@ export const poses: Record<string, Pose> = {
   idle: { lean: 0, headTilt: -4, armF: [12, 4], armB: [-12, -4], legF: [11, 4], legB: [-11, -4] },
   point: { lean: 0, headTilt: -6, armF: [106, 156], armB: [-40, 50], legF: [11, 4], legB: [-11, -4] },
   read: { lean: 3, headTilt: 9, armF: [50, 105], armB: [38, 100], legF: [11, 4], legB: [-11, -4] },
+  wave: { lean: -2, headTilt: -5, armF: [120, 178], armB: [-12, -4], legF: [11, 4], legB: [-11, -4] },
+  cheer: { lean: -3, headTilt: -12, armF: [135, 150], armB: [-135, -150], legF: [14, 4], legB: [-14, -4] },
+  pump: { lean: -2, headTilt: -8, armF: [125, 165], armB: [-40, 50], legF: [11, 4], legB: [-11, -4] },
+  phone: { lean: 4, headTilt: 15, armF: [35, 120], armB: [-8, 6], legF: [11, 4], legB: [-11, -4] },
+  slump: { lean: 9, headTilt: 24, armF: [4, 0], armB: [-2, 2], legF: [11, 4], legB: [-11, -4] },
+  think: { lean: 0, headTilt: -8, armF: [60, 211], armB: [-40, 50], legF: [11, 4], legB: [-11, -4] },
   walk: { lean: 7, headTilt: -14, armF: [-34, -4], armB: [38, 78], legF: [30, 4], legB: [-14, -46] },
 };
 
@@ -42,7 +48,9 @@ export const Stickman: React.FC<{
   facing?: 1 | -1;
   scale?: number;
   inHand?: React.ReactNode;
-}> = ({ x, floorY, theme, pose, outfit, expression = "smile", facing = 1, scale = 1, inHand }) => {
+  lift?: number;
+  blink?: number;
+}> = ({ x, floorY, theme, pose, outfit, expression = "smile", facing = 1, scale = 1, inHand, lift = 0, blink = 0 }) => {
   const t = theme;
   const hip: Pt = [0, 0];
   const up = 180 - pose.lean;
@@ -89,7 +97,7 @@ export const Stickman: React.FC<{
           width={54}
           height={24}
           rx={12}
-          fill={hoodie ? t.accent2 : t.accent}
+          fill={hoodie ? t.accent2 : outfit === "plain" ? t.line : t.accent}
           stroke={t.line}
           strokeWidth={7}
           transform={`rotate(${tilt} ${l.end[0]} ${l.end[1]})`}
@@ -105,13 +113,22 @@ export const Stickman: React.FC<{
     <g>
       <circle cx={look - 36} cy={faceY + 18} r={10} fill={t.accent2} opacity={0.45} />
       <circle cx={look + 36} cy={faceY + 18} r={10} fill={t.accent2} opacity={0.45} />
-      <ellipse cx={look - 19} cy={faceY - 4} rx={6.5} ry={9.5} fill={t.ink} />
-      <ellipse cx={look + 19} cy={faceY - 4} rx={6.5} ry={9.5} fill={t.ink} />
+      <ellipse cx={look - 19} cy={faceY - 4} rx={6.5} ry={9.5 * (1 - 0.88 * blink)} fill={t.ink} />
+      <ellipse cx={look + 19} cy={faceY - 4} rx={6.5} ry={9.5 * (1 - 0.88 * blink)} fill={t.ink} />
       {expression === "wonder" && (
         <path
           d={`M${look - 30} ${faceY - 24} q10 -9 20 -3 M${look + 10} ${faceY - 28} q10 -6 20 3`}
           stroke={t.ink}
           strokeWidth={5}
+          strokeLinecap="round"
+          fill="none"
+        />
+      )}
+      {expression === "sad" && (
+        <path
+          d={`M${look - 32} ${faceY - 20} l16 -9 M${look + 32} ${faceY - 20} l-16 -9 M${look - 17} ${mouthY + 12} Q${look} ${mouthY - 6} ${look + 17} ${mouthY + 12}`}
+          stroke={t.ink}
+          strokeWidth={5.5}
           strokeLinecap="round"
           fill="none"
         />
@@ -143,8 +160,8 @@ export const Stickman: React.FC<{
 
   return (
     <g>
-      <ellipse cx={x} cy={floorY + 16} rx={120 * scale} ry={14 * scale} fill="#000" opacity={0.22} />
-      <g transform={`translate(${x} ${floorY - lowest * scale}) scale(${facing * scale} ${scale})`}>
+      <ellipse cx={x} cy={floorY + 16} rx={120 * scale * (1 - lift / 400)} ry={14 * scale * (1 - lift / 400)} fill="#000" opacity={0.22} />
+      <g transform={`translate(${x} ${floorY - lowest * scale - lift}) scale(${facing * scale} ${scale})`}>
       <Arm l={armB} />
       <Leg l={legB} />
       <Leg l={legF} />
