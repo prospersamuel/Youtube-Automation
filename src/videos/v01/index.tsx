@@ -5,12 +5,14 @@ import { Wipe } from "../../kit/Stage";
 import { useT } from "../../kit/time";
 import { hookScenes } from "./Hook";
 import { T, timings, type SceneDef } from "./shared";
-import { TRAP_ONE_END, trapOneScenes } from "./TrapOne";
+import { trapOneScenes } from "./TrapOne";
+import { QUICK_TEST_END, quickTestScenes, trapThreeScenes } from "./TrapThree";
+import { trapTwoScenes } from "./TrapTwo";
 
-const scenes: SceneDef[] = [...hookScenes, ...trapOneScenes];
+const scenes: SceneDef[] = [...hookScenes, ...trapOneScenes, ...trapTwoScenes, ...trapThreeScenes, ...quickTestScenes];
 
 // Grows as sections are built; the finished video runs to the end of the narration.
-export const V01_END = TRAP_ONE_END;
+export const V01_END = QUICK_TEST_END;
 
 export const V01: React.FC = () => {
   const t = useT();

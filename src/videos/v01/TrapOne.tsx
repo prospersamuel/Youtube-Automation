@@ -28,9 +28,17 @@ const MONTHS = ["JUL", "JUN", "MAY", "APR", "MAR", "FEB", "JAN"];
 
 const swing = (t: number, from: number) => 9 * Math.sin((t - from) * 5) * Math.exp(-(t - from) * 1.1);
 
-const Tag: React.FC<{ t: number; at: number; x: number; y: number; amount: string }> = ({ t, at, x, y, amount }) => (
+export const Tag: React.FC<{ t: number; at: number; x: number; y: number; amount: string; note?: string; size?: number }> = ({
+  t,
+  at,
+  x,
+  y,
+  amount,
+  note,
+  size,
+}) => (
   <K.At x={x} y={y} s={pop(t, at)} r={t > at ? swing(t, at) : 0}>
-    <K.PriceTag t={T} amount={amount} />
+    <K.PriceTag t={T} amount={amount} note={note} size={size} />
   </K.At>
 );
 
@@ -154,7 +162,7 @@ const NiceApartment: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
-const Street: React.FC = () => (
+export const Street: React.FC = () => (
   <>
     <rect x={-60} y={-60} width={S.W + 120} height={S.H + 120} fill="url(#wall)" />
     <circle cx={1560} cy={190} r={74} fill="#FFC94D" />
