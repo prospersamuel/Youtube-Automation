@@ -110,7 +110,7 @@ const Valet = (t: number, zoom: number) => {
           <K.At x={mix(2700, 1280, in2)} y={road} s={t > second + 0.7 ? 1 : 0}>
             <K.Car t={T} sleek fill="#F2B84B" spin={-in2 * 900} />
           </K.At>
-          <K.At x={910} y={230} s={pop(t, never + 0.2) * (1 - ramp(t, thought, 0.2))}>
+          <K.At x={910} y={230} s={pop(t, never + 0.2) * (1 - ramp(t, thought + 0.2, 0.2))}>
             <K.ThoughtCloud t={T} w={600} h={210}>
               <K.Txt y={-14} size={48} weight={700} fill={T.line}>
                 Wow, that driver
@@ -119,11 +119,11 @@ const Valet = (t: number, zoom: number) => {
                 is impressive.
               </K.Txt>
               <g transform="scale(1.7 0.8)">
-                <K.CrossOut t={T} k={ramp(t, thought - 0.55, 0.3)} />
+                <K.CrossOut t={T} k={ramp(t, thought - 0.2, 0.3)} />
               </g>
             </K.ThoughtCloud>
           </K.At>
-          <K.At x={920} y={220} s={pop(t, thought + 0.3)}>
+          <K.At x={920} y={220} s={pop(t, thought + 0.5)}>
             <K.ThoughtCloud t={T} w={640} h={270}>
               <K.Txt y={-50} size={48} weight={700} fill={T.line}>
                 If I had that car,
@@ -178,8 +178,8 @@ export const trapTwoScenes = sequence(
           zoom={zoom}
           hero={pip(t, 430, [[0, poses.think]], "wonder")}
           cards={[
-            { icon: "house", label: "Kept him dry", at: c("His old apartment kept"), check: c("kept the rain out") + 0.5 },
-            { icon: "oldcar", label: "Got him there", at: c("His old car got"), check: c("got him to work") + 0.5 },
+            { icon: "house", label: "Kept him dry", at: c("His old apartment kept"), check: c("kept the rain out") },
+            { icon: "oldcar", label: "Got him there", at: c("His old car got"), check: c("got him to work") },
           ]}
         />
       ),

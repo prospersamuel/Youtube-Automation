@@ -66,7 +66,8 @@ const Hidden = (t: number, zoom: number) => {
           <K.At x={900} y={mix(880, 800, pop(t, sits))} s={pop(t, sits)}>
             <rect x={-150} y={-120} width={300} height={220} rx={22} fill={T.accent2} stroke={T.line} strokeWidth={9} />
             <circle cx={0} cy={-10} r={54} fill="#FFFDF8" stroke={T.line} strokeWidth={8} />
-            <path d="M0 -44 V-10 H30" stroke={T.line} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M-34 -10 H34 M0 -44 V24" stroke={T.line} strokeWidth={8} strokeLinecap="round" />
+            <circle cx={0} cy={-10} r={12} fill={T.accent} stroke={T.line} strokeWidth={6} />
             <rect x={-180} y={96} width={360} height={24} rx={10} fill={T.line} />
           </K.At>
           {[

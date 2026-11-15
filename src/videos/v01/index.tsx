@@ -3,16 +3,17 @@ import { AbsoluteFill, Audio, staticFile } from "remotion";
 import { Captions } from "../../kit/Captions";
 import { Wipe } from "../../kit/Stage";
 import { useT } from "../../kit/time";
+import { closeScenes, V01_END } from "./Close";
 import { hookScenes } from "./Hook";
 import { T, timings, type SceneDef } from "./shared";
 import { trapOneScenes } from "./TrapOne";
-import { QUICK_TEST_END, quickTestScenes, trapThreeScenes } from "./TrapThree";
+import { quickTestScenes, trapThreeScenes } from "./TrapThree";
 import { trapTwoScenes } from "./TrapTwo";
+import { wayOutScenes } from "./WayOut";
 
-const scenes: SceneDef[] = [...hookScenes, ...trapOneScenes, ...trapTwoScenes, ...trapThreeScenes, ...quickTestScenes];
+const scenes: SceneDef[] = [...hookScenes, ...trapOneScenes, ...trapTwoScenes, ...trapThreeScenes, ...quickTestScenes, ...wayOutScenes, ...closeScenes];
 
-// Grows as sections are built; the finished video runs to the end of the narration.
-export const V01_END = QUICK_TEST_END;
+export { V01_END };
 
 export const V01: React.FC = () => {
   const t = useT();
