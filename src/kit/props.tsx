@@ -325,3 +325,189 @@ export const Confetti: React.FC<P & { age: number }> = ({ t, age }) => {
     </g>
   );
 };
+
+export const Pill: React.FC<P & { text: string; fill?: string; w?: number; size?: number }> = ({ t, text, fill, w = 300, size = 46 }) => (
+  <g>
+    <rect x={-w / 2} y={-42} width={w} height={84} rx={42} fill={fill ?? t.accent2} stroke={t.line} strokeWidth={8} />
+    <Txt y={size * 0.34} size={size} weight={700} fill={WHITE}>
+      {text}
+    </Txt>
+  </g>
+);
+
+// Hangs from its origin (the top of the string), so rotating it makes it swing.
+export const PriceTag: React.FC<P & { amount: string; note?: string }> = ({ t, amount, note = "more per month" }) => (
+  <g>
+    <path d="M0 0 V70" stroke={t.line} strokeWidth={6} />
+    <rect x={-214} y={54} width={428} height={196} rx={26} fill={t.accent} stroke={t.line} strokeWidth={9} />
+    <circle cx={0} cy={84} r={12} fill={t.surface} stroke={t.line} strokeWidth={5} />
+    <Txt y={186} size={92} weight={700} fill={WHITE}>
+      {amount}
+    </Txt>
+    <Txt y={228} size={34} weight={500} fill={WHITE} opacity={0.9}>
+      {note}
+    </Txt>
+  </g>
+);
+
+export const ThoughtCloud: React.FC<P & { w: number; h: number; children: React.ReactNode }> = ({ t, w, h, children }) => (
+  <g>
+    <circle cx={-w / 2 - 44} cy={h / 2 + 76} r={13} fill={t.surface} stroke={t.line} strokeWidth={6} />
+    <circle cx={-w / 2 - 6} cy={h / 2 + 30} r={22} fill={t.surface} stroke={t.line} strokeWidth={7} />
+    <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={Math.min(h / 2, 90)} fill={t.surface} stroke={t.line} strokeWidth={8} />
+    {children}
+  </g>
+);
+
+// Origin is the floor at the sofa's left edge.
+export const Sofa: React.FC<P & { w: number; fill: string }> = ({ t, w, fill }) => (
+  <g stroke={t.line} strokeWidth={8}>
+    <path d={`M36 -30 V0 M${w - 36} -30 V0`} strokeWidth={12} strokeLinecap="round" />
+    <rect x={22} y={-236} width={w - 44} height={160} rx={42} fill={fill} />
+    <rect x={0} y={-158} width={64} height={134} rx={30} fill={fill} />
+    <rect x={w - 64} y={-158} width={64} height={134} rx={30} fill={fill} />
+    <rect x={54} y={-124} width={w - 108} height={100} rx={26} fill={fill} />
+  </g>
+);
+
+const CarWheel: React.FC<P & { x: number; spin: number }> = ({ t, x, spin }) => (
+  <g transform={`translate(${x} -46)`}>
+    <circle r={46} fill={t.line} />
+    <circle r={20} fill={t.surface} />
+    <path d="M-20 0 H20 M0 -20 V20" stroke={t.line} strokeWidth={5} transform={`rotate(${spin})`} />
+  </g>
+);
+
+// Origin is the road under the middle of the car; both cars face right.
+export const Car: React.FC<P & { sleek?: boolean; spin?: number }> = ({ t, sleek = false, spin = 0 }) =>
+  sleek ? (
+    <g>
+      <path
+        d="M-260 -60 Q-270 -130 -200 -144 L-130 -214 Q-114 -230 -86 -230 H24 Q54 -230 76 -210 L142 -148 Q212 -140 220 -98 V-60 Z"
+        fill={t.accent}
+        stroke={t.line}
+        strokeWidth={9}
+        strokeLinejoin="round"
+      />
+      <path d="M-122 -160 L-80 -206 H20 Q40 -206 54 -194 L92 -160 Z" fill="#BFE6EC" stroke={t.line} strokeWidth={7} strokeLinejoin="round" />
+      <path d="M-14 -206 V-160" stroke={t.line} strokeWidth={6} />
+      <circle cx={196} cy={-112} r={13} fill="#FFD76B" stroke={t.line} strokeWidth={5} />
+      <path d="M-236 -104 h34" stroke={t.line} strokeWidth={8} strokeLinecap="round" />
+      <CarWheel t={t} x={-150} spin={spin} />
+      <CarWheel t={t} x={132} spin={spin} />
+    </g>
+  ) : (
+    <g>
+      <path d="M-150 -146 L-112 -252 H86 L138 -146 Z" fill="#CDBDA0" stroke={t.line} strokeWidth={9} strokeLinejoin="round" />
+      <path d="M-118 -156 L-92 -230 H-18 V-156 Z M6 -156 V-230 H72 L108 -156 Z" fill="#BFE6EC" stroke={t.line} strokeWidth={6} strokeLinejoin="round" />
+      <rect x={-232} y={-152} width={464} height={96} rx={24} fill="#CDBDA0" stroke={t.line} strokeWidth={9} />
+      <circle cx={206} cy={-116} r={13} fill="#FFD76B" stroke={t.line} strokeWidth={5} />
+      <path d="M-232 -92 h-16 M232 -92 h16" stroke={t.line} strokeWidth={12} strokeLinecap="round" />
+      {[
+        [-70, -90, 9],
+        [-46, -74, 6],
+        [96, -84, 8],
+        [-196, -120, 6],
+      ].map(([x, y, r]) => (
+        <circle key={`${x}`} cx={x} cy={y} r={r} fill="#B5693B" opacity={0.75} />
+      ))}
+      <CarWheel t={t} x={-140} spin={spin} />
+      <CarWheel t={t} x={140} spin={spin} />
+    </g>
+  );
+
+export const Meter: React.FC<P & { level: number; label: string; value: string }> = ({ t, level, label, value }) => (
+  <g>
+    <Txt y={-292} size={40} weight={700} spacing={4} fill={t.line}>
+      {label}
+    </Txt>
+    <rect x={-108} y={-246} width={240} height={520} rx={36} fill="#000" opacity={0.16} />
+    <rect x={-120} y={-260} width={240} height={520} rx={36} fill={t.surface} stroke={t.line} strokeWidth={9} />
+    {level > 0.005 && <rect x={-102} y={242 - 484 * level} width={204} height={484 * level} rx={Math.min(22, 242 * level)} fill={t.accent2} />}
+    <rect x={-98} y={-44} width={196} height={88} rx={44} fill={t.surface} stroke={t.line} strokeWidth={6} />
+    <Txt y={22} size={60} weight={700} fill={t.line}>
+      {value}
+    </Txt>
+  </g>
+);
+
+export const Wheel: React.FC<P & { r: number; angle: number }> = ({ t, r, angle }) => (
+  <g>
+    <path
+      d={`M${-r * 0.5} ${r * 0.866} L${-r * 0.66} ${r + 70} H${r * 0.66} L${r * 0.5} ${r * 0.866}`}
+      stroke={t.line}
+      strokeWidth={15}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+    <g transform={`rotate(${angle})`}>
+      {[0, 45, 90, 135].map((a) => (
+        <path key={a} d={`M${-r} 0 H${r}`} stroke={t.line} strokeWidth={6} opacity={0.3} transform={`rotate(${a})`} />
+      ))}
+      {Array.from({ length: 24 }, (_, i) => (
+        <path key={i} d={`M0 ${r - 34} V${r - 6}`} stroke={t.line} strokeWidth={7} strokeLinecap="round" opacity={0.55} transform={`rotate(${i * 15})`} />
+      ))}
+    </g>
+    <circle r={r} fill="none" stroke={t.line} strokeWidth={16} />
+    <circle r={22} fill={t.accent} stroke={t.line} strokeWidth={8} />
+  </g>
+);
+
+const PlateIcon: React.FC<P> = ({ t }) => (
+  <g>
+    <path d="M-112 -72 v144 M-128 -72 v42 q0 18 16 18 q16 0 16 -18 v-42" stroke={t.line} strokeWidth={8} strokeLinecap="round" fill="none" />
+    <path d="M112 72 v-144 q30 34 0 86" stroke={t.line} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" fill={t.surface} />
+    <circle r={72} fill={WHITE} stroke={t.line} strokeWidth={8} />
+    <circle r={44} fill="none" stroke={t.line} strokeWidth={5} opacity={0.3} />
+  </g>
+);
+
+const ScreensIcon: React.FC<P> = ({ t }) => (
+  <g>
+    <rect x={-70} y={-78} width={160} height={104} rx={14} fill={t.accent2} stroke={t.line} strokeWidth={8} transform="rotate(-8)" />
+    <rect x={-92} y={-46} width={176} height={116} rx={14} fill={t.line} />
+    <path d="M-22 -16 l48 28 l-48 28 Z" fill={WHITE} />
+  </g>
+);
+
+const ShirtIcon: React.FC<P> = ({ t }) => (
+  <g transform="translate(0 -4)">
+    <path d="M0 -84 q0 -28 18 -28" stroke={t.line} strokeWidth={7} strokeLinecap="round" fill="none" />
+    <path d="M-40 -80 q40 30 80 0 l70 40 l-34 50 l-36 -18 v98 h-80 v-98 l-36 18 l-34 -50 Z" fill={t.accent} stroke={t.line} strokeWidth={8} strokeLinejoin="round" />
+  </g>
+);
+
+const HouseIcon: React.FC<P> = ({ t }) => (
+  <g transform="translate(0 76)">
+    <path d="M-92 0 V-84 L0 -156 L92 -84 V0 Z" fill={t.accent2} stroke={t.line} strokeWidth={8} strokeLinejoin="round" />
+    <rect x={-22} y={-62} width={44} height={62} rx={6} fill={WHITE} stroke={t.line} strokeWidth={6} />
+  </g>
+);
+
+const CarIcon: React.FC<P> = ({ t }) => (
+  <g transform="translate(6 56) scale(0.44)">
+    <Car t={t} sleek />
+  </g>
+);
+
+Object.assign(icons, { plate: PlateIcon, screens: ScreensIcon, shirt: ShirtIcon, house: HouseIcon, car: CarIcon });
+
+export const ItemCard: React.FC<P & { icon: string; label: string; check?: number }> = ({ t, icon, label, check = 0 }) => {
+  const Icon = (icons as Record<string, React.FC<P>>)[icon];
+  return (
+    <g>
+      <Panel t={t} w={290} h={350} />
+      <g transform="translate(0 -36)">
+        <Icon t={t} />
+      </g>
+      <Txt y={130} size={38} fill={t.line}>
+        {label}
+      </Txt>
+      <At x={128} y={-162} s={check} r={8}>
+        <circle r={40} fill={t.accent2} stroke={t.line} strokeWidth={8} />
+        <path d="M-17 2 l12 12 l24 -27" stroke={WHITE} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      </At>
+    </g>
+  );
+};

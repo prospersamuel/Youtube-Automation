@@ -1,18 +1,12 @@
 import React from "react";
-import { AbsoluteFill, Audio, Easing, staticFile } from "remotion";
-import timingsJson from "../../../videos/01-broke-on-a-good-salary/timings.json";
-import { Captions } from "../../kit/Captions";
-import { makeCues, type Timings } from "../../kit/cues";
+import { Easing } from "remotion";
 import { alive, blinkAt, mixPose, poseAt } from "../../kit/pose";
 import * as K from "../../kit/props";
-import { Stage, Wipe } from "../../kit/Stage";
-import { mix, pop, ramp, useT } from "../../kit/time";
+import { Stage } from "../../kit/Stage";
+import { mix, pop, ramp } from "../../kit/time";
 import * as S from "../../scenery";
 import { Stickman, poses } from "../../Stickman";
-import { paper as T } from "../../theme";
-
-const timings = timingsJson as Timings;
-const cue = makeCues(timings);
+import { cue, drift, Hero, T, type SceneDef } from "./shared";
 
 const CUT = {
   later: cue.at("Six months later") - 0.25,
@@ -20,13 +14,7 @@ const CUT = {
   millions: cue.at("Pip's problem") - 0.2,
   traps: cue.at("He has walked") - 0.2,
 };
-export const HOOK_END = cue.end("get you out") + 1;
-
-const drift = (t: number, from: number, to: number) => 1 + 0.025 * ramp(t, from, to - from, Easing.linear);
-
-const Hero: React.FC<Omit<React.ComponentProps<typeof Stickman>, "theme" | "outfit" | "floorY"> & { floorY?: number; t: number }> = ({ t, floorY = S.FLOOR, ...rest }) => (
-  <Stickman theme={T} outfit="scarf" floorY={floorY} blink={blinkAt(t)} {...rest} />
-);
+export const HOOK_END = cue.end("get you out") + 0.3;
 
 const Raise: React.FC<{ t: number }> = ({ t }) => {
   const card = cue.at("just got a raise");
@@ -307,17 +295,10 @@ const Traps: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
-export const V01Hook: React.FC = () => {
-  const t = useT();
-  const Scene = t < CUT.later ? Raise : t < CUT.where ? Later : t < CUT.millions ? Where : t < CUT.traps ? Millions : Traps;
-  return (
-    <AbsoluteFill style={{ background: T.wall2 }}>
-      <Audio src={staticFile("v01/narration.mp3")} />
-      <Scene t={t} />
-      {Object.values(CUT).map((at) => (
-        <Wipe key={at} t={t} at={at} theme={T} />
-      ))}
-      <Captions timings={timings} theme={T} />
-    </AbsoluteFill>
-  );
-};
+export const hookScenes: SceneDef[] = [
+  { at: 0, C: Raise },
+  { at: CUT.later, C: Later },
+  { at: CUT.where, C: Where },
+  { at: CUT.millions, C: Millions },
+  { at: CUT.traps, C: Traps },
+];
