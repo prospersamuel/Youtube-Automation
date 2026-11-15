@@ -90,7 +90,7 @@ const PhoneUp = (t: number, zoom: number) => {
   const start = para("On the twenty-sixth of the month he opens");
   const first = c("for the first time");
   const up = c("the number is going up");
-  const value = mix(11, 3011, ramp(t, up, 1.8));
+  const value = mix(11, 3011, ramp(t, first + 0.2, 1.5));
   return (
     <Stage
       theme={T}
@@ -106,11 +106,11 @@ const PhoneUp = (t: number, zoom: number) => {
       }
       front={
         <>
-          {pip(t, 780, [[0, poses.phone], [up + 1.4, poses.cheer]], t < first ? "smile" : "open", { inHand: <K.HandPhone t={T} /> })}
+          {pip(t, 780, [[0, poses.phone], [up + 0.2, poses.cheer]], t < first ? "smile" : "open", { inHand: <K.HandPhone t={T} /> })}
           <K.At x={1330} y={mix(1500, 480, pop(t, start + 0.5, 0.7))} r={3}>
             <K.BigPhone t={T} time={t} balance={t >= first ? `${K.money(value)}.00` : undefined} balancePop={pop(t, first)} good balanceSize={64} />
           </K.At>
-          <K.At x={1330} y={70} s={pop(t, up + 0.4)} r={-2}>
+          <K.At x={1330} y={70} s={pop(t, up)} r={-2}>
             <K.Pill t={T} text="▲  Going up" w={380} />
           </K.At>
         </>

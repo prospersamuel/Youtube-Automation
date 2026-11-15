@@ -45,7 +45,7 @@ const Intro = (t: number, zoom: number) => {
 
 const Flip = (t: number, zoom: number) => {
   const start = para("Most people spend first");
-  const turn = c("So flip the order");
+  const turn = c("So flip the order") - 0.25;
   const flip = ramp(t, turn, 0.7, Easing.inOut(Easing.cubic));
   const xs = [620, 1060, 1500];
   const y = 400;
