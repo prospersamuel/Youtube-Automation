@@ -7,7 +7,7 @@ Sources, credited in the description and not spoken: The Psychology of Money (Mo
 
 ## Hook
 
-Meet Pip. Pip just got a raise. A big one. He goes from three thousand dollars a month to four thousand. He's thrilled. This is it. This is when life finally gets easier.
+Meet Pip. [pause:0.75] Pip just got a raise. A big one. He goes from three thousand dollars a month to four thousand. He's thrilled. This is it. This is when life finally gets easier.
 
 Six months later, it's the twenty-sixth of the month. Pip opens his banking app, and there's eleven dollars in it.
 

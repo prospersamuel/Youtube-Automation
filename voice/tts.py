@@ -19,10 +19,12 @@ import soundfile as sf
 from kokoro_onnx import Kokoro
 
 MODELS = pathlib.Path(__file__).parent / "models"
-SENTENCE_GAP = 0.6
-PARAGRAPH_GAP = 0.95
+SENTENCE_GAP = 0.35
+PARAGRAPH_GAP = 0.65
 SECTION_GAP = 2.0
 SILENCE = 0.004
+# Write [pause:0.8] after a sentence in the script to hold that many seconds before the next one.
+PAUSE = re.compile(r"\s*\[pause:([\d.]+)\]\s*")
 
 
 def blocks(text: str):
@@ -38,12 +40,20 @@ def blocks(text: str):
             if out:
                 out[-1]["gap"] = SECTION_GAP
             continue
-        out.append({"section": section, "text": " ".join(para.split()), "gap": PARAGRAPH_GAP})
+        out.append({"section": section, "raw": " ".join(para.split()), "text": " ".join(PAUSE.sub(" ", para).split()), "gap": PARAGRAPH_GAP})
     return out
 
 
 def sentences(paragraph: str):
-    return [s for s in re.split(r"""(?:(?<=[.!?])|(?<=[.!?]["']))\s+""", paragraph) if s]
+    """(sentence, pause after it) pairs; the pause is None unless the script sets one."""
+    out = []
+    pieces = PAUSE.split(paragraph)
+    for i in range(0, len(pieces), 2):
+        found = [s for s in re.split(r"""(?:(?<=[.!?])|(?<=[.!?]["']))\s+""", pieces[i]) if s]
+        out += [(s, None) for s in found]
+        if found and i + 1 < len(pieces):
+            out[-1] = (out[-1][0], float(pieces[i + 1]))
+    return out
 
 
 def trim(samples, rate):
@@ -111,8 +121,8 @@ def main():
     audio, rate, cursor, timeline = [], 24000, 0.0, []
     for part in parts:
         entry = {"section": part["section"], "text": part["text"], "start": round(cursor, 3), "words": []}
-        spoken = sentences(part["text"])
-        for n, sentence in enumerate(spoken):
+        spoken = sentences(part["raw"])
+        for n, (sentence, hold) in enumerate(spoken):
             samples, rate = kokoro.create(sentence, voice=a.voice, speed=a.speed, lang=a.lang)
             samples = trim(samples, rate)
             length = len(samples) / rate
@@ -125,7 +135,7 @@ def main():
                     {"t": w, "s": round(cursor + s, 3), "e": round(cursor + e, 3)} for w, (s, e) in zip(words, align(words, heard, length))
                 ]
             entry["end"] = round(cursor + length, 3)
-            gap = part["gap"] if n == len(spoken) - 1 else SENTENCE_GAP
+            gap = part["gap"] if n == len(spoken) - 1 else (hold or SENTENCE_GAP)
             audio += [samples, np.zeros(int(rate * gap), dtype=samples.dtype)]
             cursor += length + gap
         timeline.append(entry)
