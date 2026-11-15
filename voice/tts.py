@@ -1,20 +1,28 @@
 """Turn a narration script into audio plus word timings.
 
-python3 voice/tts.py script.md out.wav --voice af_sarah --timings timings.json
+python3 voice/tts.py script.md out.mp3 --timings timings.json
+
+Each sentence is spoken on its own and joined with fixed pauses, because the voice
+model rushes from one sentence into the next when given a whole paragraph.
 """
 import argparse
 import difflib
 import json
+import os
 import pathlib
 import re
+import subprocess
+import tempfile
 
 import numpy as np
 import soundfile as sf
 from kokoro_onnx import Kokoro
 
 MODELS = pathlib.Path(__file__).parent / "models"
-PARAGRAPH_GAP = 0.45
+SENTENCE_GAP = 0.6
+PARAGRAPH_GAP = 0.95
 SECTION_GAP = 2.0
+SILENCE = 0.004
 
 
 def blocks(text: str):
@@ -32,6 +40,19 @@ def blocks(text: str):
             continue
         out.append({"section": section, "text": " ".join(para.split()), "gap": PARAGRAPH_GAP})
     return out
+
+
+def sentences(paragraph: str):
+    return [s for s in re.split(r"""(?:(?<=[.!?])|(?<=[.!?]["']))\s+""", paragraph) if s]
+
+
+def trim(samples, rate):
+    """Cut the model's own leading and trailing silence so every pause is one we chose."""
+    loud = np.flatnonzero(np.abs(samples) > SILENCE)
+    if not len(loud):
+        return samples
+    pad = int(rate * 0.05)
+    return samples[max(0, loud[0] - pad) : loud[-1] + pad]
 
 
 def norm(word: str) -> str:
@@ -66,7 +87,7 @@ def align(script_words, heard, duration):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("script")
-    ap.add_argument("out")
+    ap.add_argument("out", help=".mp3 (loudness-normalised) or .wav")
     ap.add_argument("--voice", default="af_sarah")
     ap.add_argument("--speed", type=float, default=0.95)
     ap.add_argument("--lang", default="en-us")
@@ -81,8 +102,6 @@ def main():
 
     listen = None
     if a.timings:
-        import os
-
         # The default large-file transfer service is often blocked on locked-down networks; plain HTTPS works.
         os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
         from faster_whisper import WhisperModel
@@ -91,27 +110,41 @@ def main():
 
     audio, rate, cursor, timeline = [], 24000, 0.0, []
     for part in parts:
-        samples, rate = kokoro.create(part["text"], voice=a.voice, speed=a.speed, lang=a.lang)
-        length = len(samples) / rate
-        entry = {"section": part["section"], "text": part["text"], "start": round(cursor, 3), "end": round(cursor + length, 3)}
-        if listen:
-            mono16k = np.interp(np.arange(0, len(samples), rate / 16000), np.arange(len(samples)), samples).astype(np.float32)
-            segments, _ = listen.transcribe(mono16k, word_timestamps=True, language="en")
-            heard = [(w.word, w.start, w.end) for seg in segments for w in seg.words]
-            words = part["text"].split()
-            entry["words"] = [
-                {"t": w, "s": round(cursor + s, 3), "e": round(cursor + e, 3)} for w, (s, e) in zip(words, align(words, heard, length))
-            ]
+        entry = {"section": part["section"], "text": part["text"], "start": round(cursor, 3), "words": []}
+        spoken = sentences(part["text"])
+        for n, sentence in enumerate(spoken):
+            samples, rate = kokoro.create(sentence, voice=a.voice, speed=a.speed, lang=a.lang)
+            samples = trim(samples, rate)
+            length = len(samples) / rate
+            if listen:
+                mono16k = np.interp(np.arange(0, len(samples), rate / 16000), np.arange(len(samples)), samples).astype(np.float32)
+                segments, _ = listen.transcribe(mono16k, word_timestamps=True, language="en")
+                heard = [(w.word, w.start, w.end) for seg in segments for w in seg.words]
+                words = sentence.split()
+                entry["words"] += [
+                    {"t": w, "s": round(cursor + s, 3), "e": round(cursor + e, 3)} for w, (s, e) in zip(words, align(words, heard, length))
+                ]
+            entry["end"] = round(cursor + length, 3)
+            gap = part["gap"] if n == len(spoken) - 1 else SENTENCE_GAP
+            audio += [samples, np.zeros(int(rate * gap), dtype=samples.dtype)]
+            cursor += length + gap
         timeline.append(entry)
-        audio += [samples, np.zeros(int(rate * part["gap"]), dtype=samples.dtype)]
-        cursor += length + part["gap"]
 
-    sf.write(a.out, np.concatenate(audio), rate)
+    out = pathlib.Path(a.out)
+    if out.suffix == ".mp3":
+        with tempfile.NamedTemporaryFile(suffix=".wav") as tmp:
+            sf.write(tmp.name, np.concatenate(audio), rate)
+            subprocess.run(
+                ["ffmpeg", "-loglevel", "error", "-y", "-i", tmp.name, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "48000", "-ac", "1", "-b:a", "96k", str(out)],
+                check=True,
+            )
+    else:
+        sf.write(out, np.concatenate(audio), rate)
     if a.timings:
         pathlib.Path(a.timings).write_text(
             json.dumps({"voice": a.voice, "speed": a.speed, "duration": round(cursor, 3), "paragraphs": timeline}, indent=1)
         )
-    print(f"{a.out}: {cursor:.1f}s, {len(parts)} paragraphs")
+    print(f"{out}: {cursor:.1f}s, {len(parts)} paragraphs")
 
 
 if __name__ == "__main__":
