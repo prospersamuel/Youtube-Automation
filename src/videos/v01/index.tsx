@@ -22,6 +22,7 @@ export const V01: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: T.wall2 }}>
       <Audio src={staticFile("v01/narration.mp3")} />
+      <Audio src={staticFile("music/calm-pad.mp3")} />
       <current.C t={t} />
       {scenes.slice(1).map((s) => (
         <Wipe key={s.at} t={t} at={s.at} theme={T} />
