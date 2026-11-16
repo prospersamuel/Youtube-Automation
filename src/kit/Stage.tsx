@@ -8,7 +8,9 @@ import { mix, ramp } from "./time";
 export const Stage: React.FC<{ theme: Theme; back: React.ReactNode; front?: React.ReactNode; zoom?: number }> = ({ theme, back, front, zoom = 1 }) => {
   const frame = useCurrentFrame();
   return (
-    <AbsoluteFill style={{ background: theme.wall2, transform: `scale(${zoom})` }}>
+    <AbsoluteFill
+      style={{ background: theme.wall2, transform: `scale(${zoom})` }}
+    >
       <svg width={S.W} height={S.H} viewBox={`0 0 ${S.W} ${S.H}`}>
         <S.Defs t={theme} />
         <defs>
