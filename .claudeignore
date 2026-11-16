@@ -1,0 +1,15 @@
+node_modules/
+out/
+renders/
+public/**/*.mp3
+public/**/*.mp4
+*.mp4
+*.mp3
+*.wav
+*.png
+*.jpg
+package-lock.json
+voice/models/
+__pycache__/
+branding/
+style-frames/

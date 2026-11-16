@@ -1,18 +1,29 @@
 # Read It Once: YouTube video pipeline
 
-Faceless animated channel. Each video explains one idea from books on money, habits and psychology. The character is Pip (stickman with a red scarf). Style is the "paper" theme in `src/theme.ts`.
+Faceless animated channel (@ReadItOnce, handle to be set after YouTube's 14-day wait). Each video explains ONE idea from books the owner has read, in short animated lessons. Character: Pip (stickman, red scarf). Look: "paper" theme in `src/theme.ts`. Voice: Kokoro `af_sarah`.
+
+Books the owner has read: Psychology of Money, Atomic Habits, Rich Dad Poor Dad, Think and Grow Rich, $100M Offers, Influence, 48 Laws of Power (Psychology of Money and Rich Dad are favourites). Start with less flashy topics, not the best ones. Topic list: video 2 is topic 10 "The 2-minute rule" (Atomic Habits), then 15, 19, 22.
+
+## Owner (read first, do not re-ask)
+
+- Software developer, no design/editing skills, free tools only, Claude Pro only. Often on a phone; laptop sometimes dead.
+- Usage budget is VERY tight. Keep replies short. Do not read big files (`src/kit/props.tsx`, `TrapOne.tsx`) or view images unless essential. Use Grep/offsets, not whole-file reads. No re-renders unless asked. Commit and push after each step.
+- Wants AUDIO to approve, not text. Never name books/authors in narration (credit them in the description).
+- Pauses: sentence 0.35s, paragraph 0.65s; `[pause:0.75]` only after "Meet Pip." Do not change.
+- Do not create PRs unless asked. Branch: `claude/optimistic-curie-ktrr49`, push with `git -c push.negotiate=true push -u origin <branch>`.
+- Owner does upload, end screens, channel settings. Claude supplies title, description, tags, thumbnail, and advises country/timing. After publishing the owner sends analytics (impressions, CTR, avg view duration, retention graph, 48h/7d views).
 
 ## Making a video
 
-1. Script: `videos/NN-slug/script.md`. Narration starts after the `---` line; `## ` headings are sections (not spoken). Do not name books or authors in the narration; credit them in the description. Add `[pause:0.75]` after a sentence to hold longer.
-2. Voice: `python3 voice/tts.py videos/NN-slug/script.md public/vNN/narration.mp3 --timings videos/NN-slug/timings.json` (Kokoro voice `af_sarah`, speed 0.95; run `voice/setup.sh` once). Send the audio to the owner for approval before animating.
-3. Scenes: `src/videos/vNN/`. Copy the structure of `src/videos/v01/`: one file per section exporting a scene list built with `sequence()`, timed with `cue.at("spoken phrase")` and `para("paragraph start")` so animation follows the voice. Prefer the templates in `src/kit/scenes.tsx` (title, card row, quote, list) and props in `src/kit/props.tsx`.
-4. Check: `npx tsc`, then `scripts/preview.sh V01 12.5 40 ...` renders frames at those seconds into contact sheets in `out/preview/`.
-5. Render: `npx remotion render src/index.ts V01 out/video.mp4` (about 70 minutes in the cloud; add `--browser-executable` pointing at the pre-installed headless shell there, as `scripts/preview.sh` does).
-6. Upload kit: thumbnail as a `<Still>` (see `src/videos/v01/Thumbnail.tsx`), title/description/tags in `videos/NN-slug/upload/youtube.md`.
+1. Script: `videos/NN-slug/script.md`. Narration starts after the `---` line; `## ` headings are sections (not spoken).
+2. Voice: `python3 voice/tts.py videos/NN-slug/script.md public/vNN/narration.mp3 --timings videos/NN-slug/timings.json` (run `voice/setup.sh` once; needs `HF_HUB_DISABLE_XET=1`). Send the audio to the owner for approval BEFORE animating.
+3. Scenes: `src/videos/vNN/`. Copy `src/videos/v01/` structure: one file per section exporting scenes via `sequence()`, timed with `cue.at("phrase")` / `para("paragraph start")` so animation follows the voice. Use templates in `src/kit/scenes.tsx` and props in `src/kit/props.tsx` (grep for names).
+4. Check: `npx tsc`, then `scripts/preview.sh V01 12.5 40 ...` (contact sheets in `out/preview/`).
+5. Render (~70 min, cloud): `npx remotion render src/index.ts V01 out/video.mp4 --browser-executable <chrome-headless-shell in /opt/pw-browsers> --concurrency=4 --crf=22` (see `scripts/preview.sh` for the path).
+6. Music: `scripts/add-music.sh in.mp4 out.mp4 [gain_db]` (default +9 dB over the -32 LUFS pad; narration is -16 LUFS). Regenerate pad with `voice/music.py`. Takes seconds, no re-render.
+7. Upload kit: thumbnail `<Still>` (see `src/videos/v01/Thumbnail.tsx`, render to `upload/thumbnail.jpg`), title/description/tags in `videos/NN-slug/upload/youtube.md`.
+8. Deliver files with SendUserFile (renders are gitignored, only in the container).
 
-## Owner preferences
+## Status
 
-- Wants audio to listen to rather than text to read; approves by listening.
-- Sentence pauses 0.35s, paragraph 0.65s: longer felt slow, the model's default felt rushed.
-- Very limited usage budget: keep turns short, avoid re-rendering, commit and push after each step.
+- Video 1 "Why You're Still Broke on a Good Salary": done (8:13), music mixed, thumbnail and `upload/youtube.md` written. Waiting on owner feedback before video 2.
