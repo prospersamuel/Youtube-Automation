@@ -1,0 +1,31 @@
+import React from "react";
+import { AbsoluteFill, Audio, staticFile } from "remotion";
+import { Captions } from "../../kit/Captions";
+import { Wipe } from "../../kit/Stage";
+import { useT } from "../../kit/time";
+import { finishScenes, V02_END } from "./Finish";
+import { introScenes } from "./Intro";
+import { ruleScenes } from "./Rule";
+import { T, timings, type SceneDef } from "./shared";
+import { worksScenes } from "./Works";
+
+const scenes: SceneDef[] = [...introScenes, ...ruleScenes, ...worksScenes, ...finishScenes];
+
+export { V02_END };
+
+export const V02: React.FC = () => {
+  const t = useT();
+  let current = scenes[0];
+  for (const scene of scenes) if (t >= scene.at) current = scene;
+  return (
+    <AbsoluteFill style={{ background: T.wall2 }}>
+      <Audio src={staticFile("v02/narration.mp3")} />
+      <Audio src={staticFile("music/calm-pad.mp3")} />
+      <current.C t={t} />
+      {scenes.slice(1).map((s) => (
+        <Wipe key={s.at} t={t} at={s.at} theme={T} />
+      ))}
+      <Captions timings={timings} theme={T} />
+    </AbsoluteFill>
+  );
+};
