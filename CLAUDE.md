@@ -10,7 +10,7 @@ Books the owner has read: Psychology of Money, Atomic Habits, Rich Dad Poor Dad,
 - Usage budget is VERY tight. Keep replies short. Do not read big files (`src/kit/props.tsx`, `TrapOne.tsx`) or view images unless essential. Use Grep/offsets, not whole-file reads. No re-renders unless asked. Commit and push after each step.
 - Wants AUDIO to approve, not text. Never name books/authors in narration (credit them in the description).
 - Pauses: sentence 0.35s, paragraph 0.65s; `[pause:0.75]` only after "Meet Pip." Do not change.
-- Do not create PRs unless asked. Branch: `claude/optimistic-curie-ktrr49`, push with `git -c push.negotiate=true push -u origin <branch>`.
+- Do not create PRs unless asked. Each cloud session is told its own branch; push there with `git -c push.negotiate=true push -u origin <branch>`. Work must be merged to main so new sessions start with it.
 - Owner does upload, end screens, channel settings. Claude supplies title, description, tags, thumbnail, and advises country/timing. After publishing the owner sends analytics (impressions, CTR, avg view duration, retention graph, 48h/7d views).
 
 ## Making a video
@@ -23,6 +23,15 @@ Books the owner has read: Psychology of Money, Atomic Habits, Rich Dad Poor Dad,
 6. Music: `scripts/add-music.sh in.mp4 out.mp4 [gain_db]` (default +9 dB over the -32 LUFS pad; narration is -16 LUFS). Regenerate pad with `voice/music.py`. Takes seconds, no re-render.
 7. Upload kit: thumbnail `<Still>` (see `src/videos/v01/Thumbnail.tsx`, render to `upload/thumbnail.jpg`), title/description/tags in `videos/NN-slug/upload/youtube.md`.
 8. Deliver files with SendUserFile (renders are gitignored, only in the container).
+
+## Lessons (video 2)
+
+- Fresh container: run `npm ci` first. `voice/setup.sh` downloads the Kokoro model; `--timings` also downloads a Whisper model from huggingface.co (slow first time, run it in the background and wait).
+- The container can restart and kill a render. Always use `scripts/render-chunks.sh` (resumable, 1500-frame chunks), never one long render. To fix a scene later, delete only the affected `out/chunks-V0N/NN.mp4` files and rerun it (about 8 min per chunk).
+- Before any render: contact sheets (`scripts/preview.sh`) with one frame per scene, not a handful. Then ideally a quick half-size draft. Never send a full render unchecked.
+- Thumbnail: render with `npx remotion still src/index.ts V0NThumb videos/NN-slug/upload/thumbnail.jpg --browser-executable <chrome-headless-shell>` right after writing it, and send the jpg. Do not leave it as code.
+- Whenever the owner would otherwise wait, say how long and set a `send_later` check; the harness may not wake you otherwise.
+- Owner uploads weekly on Mondays. After video N's 7-day analytics arrive, apply what they show (title, thumbnail, opening, pacing) to the next video.
 
 ## Status
 
