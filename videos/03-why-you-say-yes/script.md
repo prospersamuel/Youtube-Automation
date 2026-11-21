@@ -7,11 +7,11 @@ Sources, credited in the description and not spoken: Influence (Robert Cialdini)
 
 ## Hook
 
-Last month, Pip signed a clipboard. A woman outside the shop was collecting names for a clean streets campaign. It took ten seconds. Why not?
+Last month, Pip signed a clipboard. A woman outside the shop was collecting names for a clean streets campaign. It took ten seconds, so he signed without a second thought.
 
-A week later, she asked him to put a small sticker in his window. Easy. It was just a sticker.
+A week later, she asked him to put a small sticker in his window. That seemed easy enough, since it was only a sticker.
 
-Then she asked for a ten dollar donation. Fine. He had already come this far.
+Then she asked for a ten dollar donation. He agreed, because he had already come this far.
 
 Then, the following month, Pip found himself standing in the cold on a Saturday morning, holding a rubbish bag, as the volunteer organiser of a committee he never wanted to join.
 
@@ -27,7 +27,7 @@ Human beings have a deep need to be consistent. We want our words, our beliefs a
 
 For most of life, this is useful. It stops you changing your mind every five minutes. It makes you trustworthy.
 
-But it also gives your brain a shortcut. Instead of thinking carefully about every new decision, it just asks one lazy question: what did I do last time? And whatever the answer was, it repeats that.
+But it also gives your brain a shortcut. Instead of thinking carefully about every new decision, it just checks what you did last time, and repeats that.
 
 Which means that if someone can get one small yes out of you, they've quietly got a head start on the next one.
 
@@ -37,7 +37,7 @@ There's a famous experiment that shows just how strong this is.
 
 Researchers went door to door in a neighbourhood, asking homeowners to put a huge, ugly sign on their front lawn. The sign said to drive carefully. It was big enough to hide most of the house. And as you'd expect, almost everyone said no. About one person in six agreed.
 
-Then they tried it differently. They went to a different street, and first asked people to put a tiny postcard-sized sticker in a window. Almost everyone said yes. That was easy.
+Then they tried it differently. They went to a different street, and first asked people to put a tiny postcard-sized sticker in a window. Almost everyone said yes.
 
 Two weeks later, other people came back and asked those same homeowners for the enormous sign. And this time, about three out of four said yes.
 
@@ -61,7 +61,7 @@ Here are three signs that the ladder is being used on you.
 
 Sign one. The first request was strangely small. Free, easy, and almost impossible to refuse. Ask yourself why somebody wants this small thing from you.
 
-Sign two. The next request arrives wearing the first one's clothes. Something like, since you've already helped with this, would you be willing to do a little more? That kind of phrase is the ladder talking.
+Sign two. The next request arrives wearing the first one's clothes. It's usually a request that begins by pointing back to your first yes. That is the ladder talking.
 
 Sign three. You feel a tight, sinking feeling in your stomach when the request arrives. Part of you already knows it's a no. But another part insists you can't back out now.
 
@@ -77,7 +77,7 @@ The second move is a single question. Ask yourself whether, if you could go back
 
 And the third move is to give yourself permission to change your mind. Being consistent with a bad decision isn't loyalty. It's the same mistake, repeated. Changing your mind when you learn something new isn't weakness. It's the whole point of learning.
 
-You can even say it out loud, politely: you were happy to help with the first part, but this one isn't for you. That's a complete answer. You don't owe anyone an essay.
+You can politely say you were glad to help with the first part, but this one isn't for you. That's a complete answer. You don't owe anyone an essay.
 
 ## Close
 
