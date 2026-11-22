@@ -39,4 +39,6 @@ Books the owner has read: Psychology of Money, Atomic Habits, Rich Dad Poor Dad,
 - Video 1 "Why You're Still Broke on a Good Salary": done (8:13), music mixed, thumbnail and `upload/youtube.md` written. Waiting on owner feedback.
 - Video 2 "The 2-Minute Rule" (topic 10, Atomic Habits): done (5:40). Audio approved, scenes in `src/videos/v02/`, rendered and music mixed, thumbnail and `upload/youtube.md` written. Owner uploads Monday 2026-11-23 (one video a week).
 - Renders: use `scripts/render-chunks.sh V02 public/v02/narration.mp3 out/video2.mp4 10470` (resumable; the container can restart mid-render). Needs `npm ci` in a fresh container.
-- Next: video 3 is topic 15.
+- Video 3 "Why You Say Yes When You Want to Say No" (topic 15, Influence): audio approved (5:57, narrator-only), scenes in `src/videos/v03/`, thumbnail and `upload/youtube.md` written. Render: `scripts/render-chunks.sh V03 public/v03/narration.mp3 out/video3.mp4 10982`.
+- Shorts: `scripts/make-short.sh in.mp4 out.mp4 START END "Title"` (vertical from finished render, no re-render). Video 2's are in `upload/shorts.md`.
+- Next: video 4 is topic 19.
