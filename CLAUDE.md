@@ -41,4 +41,6 @@ Books the owner has read: Psychology of Money, Atomic Habits, Rich Dad Poor Dad,
 - Renders: use `scripts/render-chunks.sh V02 public/v02/narration.mp3 out/video2.mp4 10470` (resumable; the container can restart mid-render). Needs `npm ci` in a fresh container.
 - Video 3 "Why You Say Yes When You Want to Say No" (topic 15, Influence): audio approved (5:57, narrator-only), scenes in `src/videos/v03/`, thumbnail and `upload/youtube.md` written. Render: `scripts/render-chunks.sh V03 public/v03/narration.mp3 out/video3.mp4 10982`.
 - Shorts: `scripts/make-short.sh in.mp4 out.mp4 START END "Title"` (vertical from finished render, no re-render). Video 2's are in `upload/shorts.md`.
-- Next: video 4 is topic 19.
+- Video 4 "How to Make an Offer People Feel Stupid Refusing" (topic 19, $100M Offers): audio approved (5:32), scenes in `src/videos/v04/`, thumbnail and `upload/youtube.md` written. Render: `scripts/render-chunks.sh V04 public/v04/narration.mp3 out/video4.mp4 10222`. Upload 2026-12-07.
+- Upload plan: video 2 up 2026-11-23, video 3 on 2026-11-30, video 4 on 2026-12-07.
+- Next: video 5 is topic 22 (frame it around spotting, not using).
