@@ -25,7 +25,7 @@ const Back = ({ cx }: { cx: number }) => (
 export const V04Thumb: React.FC = () => (
   <Stage
     theme={T}
-    back={<Back cx={1400} />}
+    back={<Back cx={1450} />}
     front={
       <>
         <K.Txt x={70} y={250} size={190} weight={700} fill={T.line} anchor="start">
@@ -38,9 +38,10 @@ export const V04Thumb: React.FC = () => (
           <Tag price="$20" fill={T.line} w={420} size={120} />
           <path d="M-200 -90 L180 90" stroke={T.accent} strokeWidth={26} strokeLinecap="round" />
         </K.At>
-        <K.At x={1370} y={720} r={6}>
-          <Tag price="$60" fill={T.accent} w={720} size={220} />
+        <K.At x={1110} y={760} r={6}>
+          <Tag price="$60" fill={T.accent} w={580} size={180} />
         </K.At>
+        <Stickman theme={T} outfit="scarf" x={1680} floorY={1160} scale={1.7} pose={{ ...poses.cheer, headTilt: -8 }} expression="open" />
       </>
     }
   />
