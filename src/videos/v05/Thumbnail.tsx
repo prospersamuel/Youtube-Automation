@@ -2,9 +2,24 @@ import React from "react";
 import * as K from "../../kit/props";
 import { Stage } from "../../kit/Stage";
 import { Stickman, poses } from "../../Stickman";
-import { Bubble, T } from "./shared";
+import { T } from "./shared";
 
-// Speaks to the viewer: you talk too much, and it costs you money.
+const GREEN = "#7CC47F";
+const DARK = "#4E9A5A";
+
+// One banknote, drawn around its centre.
+const Bill: React.FC<{ w?: number }> = ({ w = 300 }) => (
+  <g>
+    <rect x={-w / 2} y={-34} width={w} height={68} rx={8} fill={GREEN} stroke={T.line} strokeWidth={6} />
+    <rect x={-w / 2 + 16} y={-22} width={w - 32} height={44} rx={6} fill="none" stroke={DARK} strokeWidth={4} />
+    <circle r={20} fill={DARK} />
+    <K.Txt y={10} size={30} weight={700} fill={GREEN}>
+      $
+    </K.Txt>
+  </g>
+);
+
+// Value-first: talking less is worth money to you.
 export const V05Thumb: React.FC = () => (
   <Stage
     theme={T}
@@ -16,21 +31,23 @@ export const V05Thumb: React.FC = () => (
     }
     front={
       <>
-        <K.Txt x={70} y={300} size={250} weight={700} fill={T.line} anchor="start">
-          YOU
+        <K.Txt x={70} y={330} size={205} weight={700} fill={T.line} anchor="start">
+          SAY LESS.
         </K.Txt>
-        <K.Txt x={70} y={540} size={250} weight={700} fill={T.line} anchor="start">
-          TALK
+        <K.Txt x={70} y={610} size={205} weight={700} fill={T.accent} anchor="start">
+          GET PAID.
         </K.Txt>
-        <K.Txt x={70} y={800} size={210} weight={700} fill={T.accent} anchor="start">
-          TOO MUCH.
-        </K.Txt>
-        <Stickman theme={T} outfit="scarf" x={1430} floorY={1160} scale={1.7} pose={{ ...poses.wave, headTilt: -6 }} expression="open" />
-        <K.At x={1620} y={220} s={1.2} r={-4}>
-          <Bubble text="blah blah blah" w={420} size={48} />
+        <Stickman theme={T} outfit="scarf" x={1330} floorY={1160} scale={1.7} pose={{ ...poses.think, headTilt: -4 }} expression="smile" />
+        {Array.from({ length: 11 }, (_, i) => (
+          <K.At key={i} x={1700 + ((i * 37) % 23) - 11} y={1020 - i * 62} r={((i * 53) % 9) - 4}>
+            <Bill />
+          </K.At>
+        ))}
+        <K.At x={1560} y={200} r={-18} s={0.9}>
+          <Bill />
         </K.At>
-        <K.At x={1690} y={700} s={0.95} r={-14}>
-          <K.WingedMoney t={T} flap={10} text="$500" />
+        <K.At x={1830} y={180} r={14} s={0.8}>
+          <Bill />
         </K.At>
       </>
     }
