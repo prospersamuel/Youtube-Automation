@@ -18,5 +18,5 @@ done
 ls $dir/??.mp4 | sed "s#.*#file '$PWD/&'#" > $dir/list.txt
 ffmpeg -loglevel error -y -f concat -safe 0 -i $dir/list.txt -c copy $dir/video-muted.mp4
 ffmpeg -loglevel error -y -i $dir/video-muted.mp4 -i "$narr" -stream_loop -1 -i public/music/calm-pad.mp3 \
-  -filter_complex "[1:a][2:a]amix=inputs=2:duration=first:normalize=0[a]" -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -shortest "$out"
+  -filter_complex "[1:a]apad[n];[n][2:a]amix=inputs=2:duration=first:normalize=0[a]" -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -shortest "$out"
 echo finished
