@@ -13,7 +13,7 @@ Description: Shrink any habit to under two minutes. Shoes on. One page. One sent
 Tags: 2 minute rule, atomic habits, how to start a habit, stop procrastinating, small habits
 
 ## Short 3: short3-start-small.mp4 (0:38)
-Title: Start tiny, then climb: how habits really grow #shorts
+Title: Your habits fail because you start too big #shorts #habits
 Description: The 2-minute rule is the front door, not the finish line. Full video: LINK
 Tags: habit building, small habits, consistency, atomic habits, self improvement
 
