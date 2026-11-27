@@ -35,7 +35,7 @@ Videos 6 onwards are added below as they are finished.
 
 | Date | Video | Topic |
 |---|---|---|
-| Mon 21 Dec | 6 | Looking rich is making you poor (topic 2) |
+| Mon 21 Dec | 6 | How much money is enough? (topic 4; topic 2 skipped, too close to video 1) |
 | Mon 28 Dec | 7 | Why your goals keep failing, and what to set instead (topic 9, New Year timing) |
 | Mon 4 Jan | 8 | Why saving matters more than your salary (topic 5) |
 | Mon 11 Jan | 9 | Why you quit just before it works (topic 14, mid-January resolution drop-off) |
