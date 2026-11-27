@@ -2,6 +2,8 @@
 
 Upload each as a Short (vertical, under 60s). Post one per day, starting the day video 2 goes up. Pin the comment after posting (three dots > Pin). Tap 'Related video' when uploading and pick the full video. Replace LINK with the video 2 URL.
 
+Re-cut 27 Nov: hook-first, 20-30s, big two-line titles. Use the newest files.
+
 ## Short 1: short1-why-you-quit.mp4 (0:36)
 Title: Why you quit new habits by day 9 #shorts
 Description: You start big, it fades, and you tell yourself Monday. Here's why, and the one tiny rule that fixes it. Full video: LINK
@@ -14,7 +16,7 @@ Description: Shrink any habit to under two minutes. Shoes on. One page. One sent
 Tags: 2 minute rule, atomic habits, how to start a habit, stop procrastinating, small habits
 Pinned comment: Shrink one habit to under 2 minutes and tell me what it is below 👇 Full video: LINK
 
-## Short 3: short3-start-small.mp4 (0:38)
+## Short 3: short3-start-small.mp4 (0:24)
 Title: Your habits fail because you start too big #shorts #habits
 Description: The 2-minute rule is the front door, not the finish line. Full video: LINK
 Tags: habit building, small habits, consistency, atomic habits, self improvement
