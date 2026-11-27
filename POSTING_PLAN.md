@@ -56,3 +56,4 @@ Videos 10 onwards are added below as they are finished.
 | Mon 25 Jan | 11 | Why most people quit before compounding pays off (topic 6) |
 | Mon 1 Feb | 12 | How manipulators gain power over you, and how to spot it (topic 23) |
 | Mon 8 Feb | 13 | Why charging more can get you more customers (topic 20) |
+| Mon 15 Feb | 14 | Why wanting it badly isn't enough (topic 25) |
