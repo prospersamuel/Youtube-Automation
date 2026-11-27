@@ -42,7 +42,9 @@ Video files are not in this repo (too big). They were sent in the Claude chat; k
 | Wed 6 Jan | Short | video 8 short2-no-label.mp4 | videos/08-saving-beats-salary/upload/shorts.md |
 | Thu 7 Jan | Short | video 8 short3-impressing.mp4 | videos/08-saving-beats-salary/upload/shorts.md |
 | **Mon 11 Jan** | **Long: video 9** | video9-music.mp4 | videos/09-quit-before-it-works/upload/youtube.md |
-| Tue 12 Jan | Short | video 9 shorts (coming) | videos/09-quit-before-it-works/upload/shorts.md |
+| Tue 12 Jan | Short | video 9 short1-quit-before.mp4 | videos/09-quit-before-it-works/upload/shorts.md |
+| Wed 13 Jan | Short | video 9 short2-valley.mp4 | videos/09-quit-before-it-works/upload/shorts.md |
+| Thu 14 Jan | Short | video 9 short3-never-miss-twice.mp4 | videos/09-quit-before-it-works/upload/shorts.md |
 
 Videos 10 onwards are added below as they are finished.
 
