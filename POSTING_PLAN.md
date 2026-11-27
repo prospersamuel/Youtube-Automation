@@ -29,16 +29,21 @@ Video files are not in this repo (too big). They were sent in the Claude chat; k
 | Wed 16 Dec | Short | video 5 short2-why-silence-works.mp4 | videos/05-smartest-stays-quiet/upload/shorts.md |
 | Thu 17 Dec | Short | video 5 short3-four-moves.mp4 | videos/05-smartest-stays-quiet/upload/shorts.md |
 
-Videos 6 onwards are added below as they are finished.
+| **Mon 21 Dec** | **Long: video 6** | video6-music.mp4 | videos/06-how-much-is-enough/upload/youtube.md |
+| Tue 22 Dec | Short | video 6 shorts (coming) | videos/06-how-much-is-enough/upload/shorts.md |
+| **Mon 28 Dec** | **Long: video 7** | video7-music.mp4 | videos/07-goals-keep-failing/upload/youtube.md |
+| Tue 29 Dec | Short | video 7 shorts (coming) | videos/07-goals-keep-failing/upload/shorts.md |
+| **Mon 4 Jan** | **Long: video 8** | video8-music.mp4 | videos/08-saving-beats-salary/upload/youtube.md |
+| Tue 5 Jan | Short | video 8 shorts (coming) | videos/08-saving-beats-salary/upload/shorts.md |
+| **Mon 11 Jan** | **Long: video 9** | video9-music.mp4 | videos/09-quit-before-it-works/upload/youtube.md |
+| Tue 12 Jan | Short | video 9 shorts (coming) | videos/09-quit-before-it-works/upload/shorts.md |
+
+Videos 10 onwards are added below as they are finished.
 
 ## Planned (not made yet)
 
 | Date | Video | Topic |
 |---|---|---|
-| Mon 21 Dec | 6 | How much money is enough? (topic 4; topic 2 skipped, too close to video 1) |
-| Mon 28 Dec | 7 | Why your goals keep failing, and what to set instead (topic 9, New Year timing) |
-| Mon 4 Jan | 8 | Why saving matters more than your salary (topic 5) |
-| Mon 11 Jan | 9 | Why you quit just before it works (topic 14, mid-January resolution drop-off) |
 | Mon 18 Jan | 10 | Why "only 3 left" works on your brain (topic 18) |
 | Mon 25 Jan | 11 | Why most people quit before compounding pays off (topic 6) |
 | Mon 1 Feb | 12 | How manipulators gain power over you, and how to spot it (topic 23) |
