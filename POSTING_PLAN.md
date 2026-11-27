@@ -30,7 +30,9 @@ Video files are not in this repo (too big). They were sent in the Claude chat; k
 | Thu 17 Dec | Short | video 5 short3-four-moves.mp4 | videos/05-smartest-stays-quiet/upload/shorts.md |
 
 | **Mon 21 Dec** | **Long: video 6** | video6-music.mp4 | videos/06-how-much-is-enough/upload/youtube.md |
-| Tue 22 Dec | Short | video 6 shorts (coming) | videos/06-how-much-is-enough/upload/shorts.md |
+| Tue 22 Dec | Short | video 6 short1-more-money.mp4 | videos/06-how-much-is-enough/upload/shorts.md |
+| Wed 23 Dec | Short | video 6 short2-never-rich-enough.mp4 | videos/06-how-much-is-enough/upload/shorts.md |
+| Thu 24 Dec | Short | video 6 short3-never-risk.mp4 | videos/06-how-much-is-enough/upload/shorts.md |
 | **Mon 28 Dec** | **Long: video 7** | video7-music.mp4 | videos/07-goals-keep-failing/upload/youtube.md |
 | Tue 29 Dec | Short | video 7 shorts (coming) | videos/07-goals-keep-failing/upload/shorts.md |
 | **Mon 4 Jan** | **Long: video 8** | video8-music.mp4 | videos/08-saving-beats-salary/upload/youtube.md |
