@@ -18,6 +18,10 @@ import { V06, V06_END } from "./videos/v06";
 import { V06Thumb } from "./videos/v06/Thumbnail";
 import { V07, V07_END } from "./videos/v07";
 import { V07Thumb } from "./videos/v07/Thumbnail";
+import { V08, V08_END } from "./videos/v08";
+import { V08Thumb } from "./videos/v08/Thumbnail";
+import { V09, V09_END } from "./videos/v09";
+import { V09Thumb } from "./videos/v09/Thumbnail";
 
 export const Root: React.FC = () => (
   <>
@@ -36,5 +40,9 @@ export const Root: React.FC = () => (
     <Still id="V06Thumb" component={V06Thumb} width={1920} height={1080} />
     <Composition id="V07" component={V07} durationInFrames={Math.round(V07_END * FPS)} fps={FPS} width={1920} height={1080} />
     <Still id="V07Thumb" component={V07Thumb} width={1920} height={1080} />
+    <Composition id="V08" component={V08} durationInFrames={Math.round(V08_END * FPS)} fps={FPS} width={1920} height={1080} />
+    <Still id="V08Thumb" component={V08Thumb} width={1920} height={1080} />
+    <Composition id="V09" component={V09} durationInFrames={Math.round(V09_END * FPS)} fps={FPS} width={1920} height={1080} />
+    <Still id="V09Thumb" component={V09Thumb} width={1920} height={1080} />
   </>
 );
