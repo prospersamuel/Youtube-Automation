@@ -31,6 +31,10 @@ Tell me in the comments about a time you talked yourself out of a better deal.
 
 say less, power of silence, negotiation tips, how to negotiate, 48 laws of power, robert greene, always say less than necessary, how to stop oversharing, oversharing, communication skills, manipulation tactics, confidence, social skills, book summary animated, psychology
 
+## Pinned comment
+
+Have you ever talked yourself out of a better deal? Tell me what happened 👇
+
 ## Settings
 
 - Thumbnail: thumbnail.jpg in this folder

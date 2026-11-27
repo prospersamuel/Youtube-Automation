@@ -30,6 +30,10 @@ Tell me in the comments about a time you said yes when you wanted to say no.
 
 how to say no, why i say yes, people pleaser, people pleasing, foot in the door, commitment and consistency, influence robert cialdini, psychology of persuasion, sales tricks, manipulation tactics, how to stop being a people pleaser, social psychology, book summary animated, self improvement
 
+## Pinned comment
+
+What's the last thing you said yes to when you really wanted to say no? 👇
+
 ## Settings
 
 - Thumbnail: thumbnail.jpg in this folder

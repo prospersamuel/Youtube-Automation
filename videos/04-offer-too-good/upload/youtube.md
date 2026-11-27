@@ -31,6 +31,10 @@ Tell me in the comments what you're selling, and which of the four parts you cou
 
 how to make an offer, irresistible offer, grand slam offer, value equation, 100m offers, alex hormozi, how to sell, how to charge more, pricing strategy, freelancing tips, small business tips, side hustle, guarantee, sales psychology, book summary animated, entrepreneurship
 
+## Pinned comment
+
+What are you selling right now, and which of the 4 parts could you improve first? 👇
+
 ## Settings
 
 - Thumbnail: thumbnail.jpg in this folder
