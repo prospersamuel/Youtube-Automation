@@ -14,6 +14,8 @@ import { V04, V04_END } from "./videos/v04";
 import { V04Thumb, V04ThumbB } from "./videos/v04/Thumbnail";
 import { V05, V05_END } from "./videos/v05";
 import { V05Thumb } from "./videos/v05/Thumbnail";
+import { V06, V06_END } from "./videos/v06";
+import { V06Thumb } from "./videos/v06/Thumbnail";
 
 export const Root: React.FC = () => (
   <>
@@ -28,5 +30,7 @@ export const Root: React.FC = () => (
     <Still id="V04ThumbB" component={V04ThumbB} width={1920} height={1080} />
     <Composition id="V05" component={V05} durationInFrames={Math.round(V05_END * FPS)} fps={FPS} width={1920} height={1080} />
     <Still id="V05Thumb" component={V05Thumb} width={1920} height={1080} />
+    <Composition id="V06" component={V06} durationInFrames={Math.round(V06_END * FPS)} fps={FPS} width={1920} height={1080} />
+    <Still id="V06Thumb" component={V06Thumb} width={1920} height={1080} />
   </>
 );
