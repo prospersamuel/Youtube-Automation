@@ -25,13 +25,16 @@ export const V07Thumb: React.FC = () => (
     }
     front={
       <>
-        <K.Txt x={70} y={300} size={190} weight={700} fill={T.line} anchor="start">
+        <K.Txt x={70} y={250} size={175} weight={700} fill={T.line} anchor="start">
+          WHY
+        </K.Txt>
+        <K.Txt x={70} y={460} size={175} weight={700} fill={T.line} anchor="start">
           YOUR
         </K.Txt>
-        <K.Txt x={70} y={520} size={190} weight={700} fill={T.line} anchor="start">
+        <K.Txt x={70} y={670} size={175} weight={700} fill={T.line} anchor="start">
           GOALS
         </K.Txt>
-        <K.Txt x={70} y={760} size={190} weight={700} fill={T.accent} anchor="start">
+        <K.Txt x={70} y={890} size={175} weight={700} fill={T.accent} anchor="start">
           FAIL.
         </K.Txt>
         {/* target with arrows that missed */}
