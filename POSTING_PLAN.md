@@ -34,9 +34,13 @@ Video files are not in this repo (too big). They were sent in the Claude chat; k
 | Wed 23 Dec | Short | video 6 short2-never-rich-enough.mp4 | videos/06-how-much-is-enough/upload/shorts.md |
 | Thu 24 Dec | Short | video 6 short3-never-risk.mp4 | videos/06-how-much-is-enough/upload/shorts.md |
 | **Mon 28 Dec** | **Long: video 7** | video7-music.mp4 | videos/07-goals-keep-failing/upload/youtube.md |
-| Tue 29 Dec | Short | video 7 shorts (coming) | videos/07-goals-keep-failing/upload/shorts.md |
+| Tue 29 Dec | Short | video 7 short1-same-goal.mp4 | videos/07-goals-keep-failing/upload/shorts.md |
+| Wed 30 Dec | Short | video 7 short2-fall-to-system.mp4 | videos/07-goals-keep-failing/upload/shorts.md |
+| Thu 31 Dec | Short | video 7 short3-payday.mp4 | videos/07-goals-keep-failing/upload/shorts.md |
 | **Mon 4 Jan** | **Long: video 8** | video8-music.mp4 | videos/08-saving-beats-salary/upload/youtube.md |
-| Tue 5 Jan | Short | video 8 shorts (coming) | videos/08-saving-beats-salary/upload/shorts.md |
+| Tue 5 Jan | Short | video 8 short1-earned-double.mp4 | videos/08-saving-beats-salary/upload/shorts.md |
+| Wed 6 Jan | Short | video 8 short2-no-label.mp4 | videos/08-saving-beats-salary/upload/shorts.md |
+| Thu 7 Jan | Short | video 8 short3-impressing.mp4 | videos/08-saving-beats-salary/upload/shorts.md |
 | **Mon 11 Jan** | **Long: video 9** | video9-music.mp4 | videos/09-quit-before-it-works/upload/youtube.md |
 | Tue 12 Jan | Short | video 9 shorts (coming) | videos/09-quit-before-it-works/upload/shorts.md |
 
